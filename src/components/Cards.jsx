@@ -16,7 +16,7 @@ export default function Cards({
 
     return (
         <>
-            <Card sx={{ display: "flex", width: 400, margin: "10px", backgroundColor: "#2b2b66" }}>
+            <Card sx={{ display: "flex", width: 400, margin: "10px", backgroundColor: "#2b2b66", boxShadow: "rgb(92,88,86) 0px 2px 5px" }}>
                 <Grid container>
                     <Grid item xs={6}>
                         <CardMedia
