@@ -4,7 +4,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import AppBar from '@mui/material/AppBar';
 
-export default function Header({ getCharacterByStatus }) {
+export default function Header() {
+
     return (
         <>
             <AppBar position="static" sx={{
@@ -18,7 +19,7 @@ export default function Header({ getCharacterByStatus }) {
                     <Typography variant="h1" gutterBottom sx={{ color: "#adff2f", fontFamily: "Creepster, system-ui", fontWeight: "400", fontStyle: "normal", textShadow: "2px 2px 5px black" }}>
                         Rick and Morty
                     </Typography>
-                    <NavBar getCharacterByStatus={getCharacterByStatus} />
+                    <NavBar />
                 </Box>
             </AppBar>
         </>

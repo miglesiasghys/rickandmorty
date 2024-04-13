@@ -3,7 +3,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Chip, Grid } from '@mui/material';
+import { Chip, Grid, Button } from '@mui/material';
+import { Link } from 'react-router-dom'
 
 export default function Cards({
     id,
@@ -37,6 +38,9 @@ export default function Cards({
                             <Chip label={status} variant="outlined" sx={{ margin: "2px", backgroundColor: "gray", fontFamily: "Roboto", fontSize: "15px" }} />
                             <Chip label={species} variant="outlined" sx={{ margin: "2px", backgroundColor: "gray", fontFamily: "Roboto", fontSize: "15px" }} />
                             <Chip label={gender} variant="outlined" sx={{ margin: "2px", backgroundColor: "gray", fontFamily: "Roboto", fontSize: "15px" }} />
+                            <Link to={`/detail/${id}`}>
+                                <Button variant="outlined" sx={{ margin: "2px", backgroundColor: "gray", fontFamily: "Roboto", fontSize: "15px" }}>+</Button>
+                            </Link>
                         </CardContent>
                     </Grid>
                 </Grid>

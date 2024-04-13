@@ -2,10 +2,9 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom';
 
-export default function NavBar({ getCharacterByStatus }) {
-
-
+export default function NavBar() {
     return (
         <>
             <Box
@@ -19,10 +18,18 @@ export default function NavBar({ getCharacterByStatus }) {
                 }}
             >
                 <ButtonGroup variant="outlined" aria-label="Basic button group" color='inherit'>
-                    <Button value="alive" onClick={() => getCharacterByStatus("Alive")}>Alive</Button>
-                    <Button onClick={() => getCharacterByStatus("Dead")}>Dead</Button>
-                    <Button onClick={() => getCharacterByStatus("unknown")}>Unknown</Button>
-                    <Button onClick={() => getCharacterByStatus(" ")}>All</Button>
+                    <Link to={"/Alive"}>
+                        <Button value="alive">Alive</Button>
+                    </Link>
+                    <Link to={"/Dead"}>
+                        <Button value="Dead">Dead</Button>
+                    </Link>
+                    <Link to={"/unknown"}>
+                        <Button value="unknown">Unknown</Button>
+                    </Link>
+                    <Link to={"/"}>
+                        <Button value="all">All</Button>
+                    </Link>
                 </ButtonGroup>
             </Box>
         </>

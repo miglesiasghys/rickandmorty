@@ -1,8 +1,32 @@
 import React from 'react'
 import Cards from './Cards'
 import Grid from '@mui/material/Grid'
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
 
-export default function ContainCard({ characters }) {
+export default function ContainCard() {
+    const [characters, setCharacters] = useState([])
+    const [page, setPage] = useState(1)
+    const [totalPages, setTotalPages] = useState(1)
+
+    const { filterStatus } = useParams()
+
+    useEffect(() => {
+        axios(
+            `https://rickandmortyapi.com/api/character/?page=${page}&${filterStatus ? `status=${filterStatus}` : ""}`)
+            .then(({ data }) => {
+                setTotalPages(data.info.pages)
+                setCharacters(data.results)
+            })
+    }, [filterStatus, page])
+
+    const handleChange = (event, value) => {
+        setPage(value);
+    };
+
     return (
         <>
             <Grid container spacing={2} sx={{ display: 'flex', justifyContent: "center", marginTop: "20px" }}>
@@ -18,6 +42,9 @@ export default function ContainCard({ characters }) {
                     />
                 ) : null}
             </Grid>
+            <Stack spacing={2} >
+                <Pagination color='primary' sx={{ p: "20px" }} count={totalPages} page={page} onChange={handleChange} />
+            </Stack>
         </>
     )
 }
