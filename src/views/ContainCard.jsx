@@ -21,6 +21,9 @@ export default function ContainCard() {
       })
   }, [filterStatus, page])
 
+  //SI CAMBIA EL ESTADO, VUELVE A LA PAG 1
+  useEffect(() => { setPage(1) }, [filterStatus])
+
   const handleChange = (event, value) => {
     setPage(value);
   };

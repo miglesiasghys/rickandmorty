@@ -6,7 +6,7 @@ export default function Header() {
 
   return (
     <AppBar position="static" sx={{
-      width: "100%",
+      maxWidth: '100%',
       padding: "60px 0px",
       backgroundImage: `url('https://www.pixel4k.com/wp-content/uploads/2020/01/rick-and-morty-smith-adventures_1580056495-2048x1199.jpg')`,
       backgroundPosition: "center",

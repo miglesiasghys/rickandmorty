@@ -6,11 +6,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
 
-  //region# Esto es una nota 
-
   return (
-    <BrowserRouter>
-      <Container maxWidth='false' sx={{ display: 'flex', flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+    <BrowserRouter >
+      <Container disableGutters maxWidth="xl" sx={{ display: 'flex', flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
         <Header />
         <Routes>
           <Route path='/' element={<ContainCard />} />

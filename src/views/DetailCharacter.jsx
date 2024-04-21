@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { Box, Grid, Typography, CardMedia, CardContent, Chip, Button } from '@mui/material'
+import { Grid, Typography, CardMedia } from '@mui/material'
 import { Link } from 'react-router-dom'
 
 export default function DetailCharacter() {
@@ -19,35 +19,37 @@ export default function DetailCharacter() {
       })
   }, [])
 
-
   return (
-    <Box>
-      <Grid container>
-        <Grid item xs={6}>
+    <>
+      <Grid container spacing={2} sx={{ display: 'flex', flexDirection: "column", justifyContent: "center", alignItems: 'center', margin: "20px" }}>
+        <Grid item xl={8} >
           <CardMedia
+            sx={{ borderRadius: "10px" }}
             component="img"
             alt={characterDetail.name}
-            height="240"
+            height="auto"
             image={characterDetail.image}
           />
         </Grid>
-        <Grid item xs={6} >
-          <CardContent sx={{
-            height: "85%", display: "flex", flexDirection: "column", alignItems: "stretch",
-            justifyContent: "space-evenly"
-          }}>
-            <Typography gutterBottom variant="h5" component="div" sx={{ color: "#adff2f", fontFamily: "Creepster, system-ui", fontWeight: "400", fontStyle: "normal", textShadow: "2px 2px 5px black", fontSize: "max 30px", textAlign: "center" }}>
-              {characterDetail.name}
+        <Grid item xl={4}>
+          <Typography gutterBottom variant="h2" component="div" sx={{ color: "#adff2f", fontFamily: "Creepster, system-ui", fontWeight: "400", fontStyle: "normal", textShadow: "2px 2px 5px black", fontSize: "max 50px", textAlign: "center" }}>
+            {characterDetail.name}
+          </Typography>
+          <Typography variant="h5" sx={{ padding: "5px", margin: "5px", backgroundColor: "gray", fontSize: "20px", border: "1px solid white", borderRadius: '10px', fontFamily: "Roboto Mono" }}> Status: {characterDetail.status}
+          </Typography>
+          <Typography variant="h5" sx={{ padding: "5px", margin: "5px", backgroundColor: "gray", fontSize: "20px", border: "1px solid white", borderRadius: '10px', fontFamily: "Roboto Mono" }}> Specie: {characterDetail.species}
+          </Typography>
+          <Typography variant="h5" sx={{ padding: "5px", margin: "5px", backgroundColor: "gray", fontSize: "20px", border: "1px solid white", borderRadius: '10px', fontFamily: "Roboto Mono" }}> Gender: {characterDetail.gender}
+          </Typography>
+          <Link to={'/'}>
+            <Typography variant="h5" sx={{ padding: "5px", margin: "5px", backgroundColor: "#adff2f", fontSize: "20px", border: "1px solid white", borderRadius: '10px', color: 'black', fontFamily: "Roboto Mono" }}>
+              Back...
             </Typography>
-            <Chip label={characterDetail.status} variant="outlined" sx={{ margin: "2px", backgroundColor: "gray", fontFamily: "Roboto", fontSize: "15px" }} />
-            <Chip label={characterDetail.species} variant="outlined" sx={{ margin: "2px", backgroundColor: "gray", fontFamily: "Roboto", fontSize: "15px" }} />
-            <Chip label={characterDetail.gender} variant="outlined" sx={{ margin: "2px", backgroundColor: "gray", fontFamily: "Roboto", fontSize: "15px" }} />
-            <Link to={`/`}>
-              <Button variant="outlined" sx={{ margin: "2px", backgroundColor: "gray", fontFamily: "Roboto", fontSize: "15px" }}>Home     </Button>
-            </Link>
-          </CardContent>
+          </Link>
         </Grid>
       </Grid>
-    </Box>
+
+    </>
+
   )
 }

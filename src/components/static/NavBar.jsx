@@ -1,12 +1,15 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { Button, ButtonGroup, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 export default function NavBar() {
+  const [page, setPage] = useState(1)
+
   const navigate = useNavigate()
 
   const direccionar = (state) => {
     navigate(`/${state}`)
+    setPage(1)
   }
 
   return (
