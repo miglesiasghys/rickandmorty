@@ -34,12 +34,7 @@ export default function ContainCard() {
         {characters ? characters.map((character) =>
           <Cards
             key={crypto.randomUUID()}
-            id={character.id}
-            name={character.name}
-            status={character.status}
-            species={character.species}
-            gender={character.gender}
-            image={character.image}
+            character={character}
           />
         ) : null}
       </Grid>
