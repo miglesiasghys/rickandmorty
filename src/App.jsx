@@ -4,6 +4,7 @@ import Footer from './components/static/Footer';
 import Container from '@mui/material/Container'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import FavoritesContextProvider from './context/FavoritesContext'
+import Favorite from './views/Favorite';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
             <Route path='/' element={<ContainCard />} />
             <Route path='/:filterStatus' element={<ContainCard />} />
             <Route path='/Detail/:idCharacter' element={<DetailCharacter />} />
+            <Route path='/Favorite' element={<Favorite />} />
           </Routes>
           <Footer />
         </Container>

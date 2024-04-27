@@ -1,9 +1,13 @@
-import React from 'react'
+import { useContext } from 'react'
 import NavBar from './NavBar'
-import { IconButton, Box, Typography, AppBar } from '@mui/material';
+import { Badge, IconButton, Box, Typography, AppBar } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { Link } from 'react-router-dom'
+import { FavoritesContext } from '../../context/FavoritesContext';
 
 export default function Header() {
+
+  const { totalFavorites } = useContext(FavoritesContext)
 
   return (
     <AppBar position="static" sx={{
@@ -13,10 +17,14 @@ export default function Header() {
       backgroundPosition: "center",
       backgroundSize: "cover"
     }}>
-      <Box sx={{display:"flex", justifyContent:"flex-end"}}>
-      <IconButton sx={{backgroundColor:"#242424", color:"white", margin:"0px 15px"}}>
-        <FavoriteBorderIcon/>
-      </IconButton>
+      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+        <Link to={'/Favorite'}>
+          <IconButton sx={{ backgroundColor: "#242424", color: "white", margin: "0px 15px" }}>
+            <Badge badgeContent={totalFavorites()} color="primary">
+              <FavoriteBorderIcon />
+            </Badge>
+          </IconButton>
+        </Link>
       </Box>
       <Box display="flex" sx={{ height: "100%", flexDirection: "column", justifyContent: "center", alignItems: "center" }} >
         <Typography variant="h1" gutterBottom sx={{ color: "#adff2f", fontFamily: "Creepster, system-ui", fontWeight: "400", fontStyle: "normal", textShadow: "2px 2px 5px black" }}>

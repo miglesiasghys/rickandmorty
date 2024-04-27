@@ -2,8 +2,9 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { Grid, Typography, CardMedia } from '@mui/material'
+import { IconButton, Box, Grid, Typography, CardMedia } from '@mui/material'
 import { Link } from 'react-router-dom'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 export default function DetailCharacter() {
 
@@ -32,6 +33,11 @@ export default function DetailCharacter() {
           />
         </Grid>
         <Grid item xl={4}>
+          <Box sx={{ display: "flex", flexDirection: "column", alignItems: "flex-end", margin: "5px" }}>
+            <IconButton onClick={() => addFavorites(character)}>
+              <FavoriteBorderIcon />
+            </IconButton>
+          </Box>
           <Typography gutterBottom variant="h2" component="div" sx={{ color: "#adff2f", fontFamily: "Creepster, system-ui", fontWeight: "400", fontStyle: "normal", textShadow: "2px 2px 5px black", fontSize: "max 50px", textAlign: "center" }}>
             {characterDetail.name}
           </Typography>
@@ -48,8 +54,6 @@ export default function DetailCharacter() {
           </Link>
         </Grid>
       </Grid>
-
     </>
-
   )
 }
