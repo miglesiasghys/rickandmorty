@@ -1,23 +1,16 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import axios from 'axios'
+import { useEffect } from 'react'
 import { IconButton, Box, Grid, Typography, CardMedia } from '@mui/material'
 import { Link } from 'react-router-dom'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import useCharacters from '../hooks/useCharacters'
 
 export default function DetailCharacter() {
 
-  const { idCharacter } = useParams()
-
-  const [characterDetail, setCharacterDetail] = useState({})
+  const { characterDetail, getDetail } = useCharacters()
 
   useEffect(() => {
-    axios(
-      `https://rickandmortyapi.com/api/character/${idCharacter}`)
-      .then(({ data }) => {
-        setCharacterDetail(data)
-      })
+    getDetail()
   }, [])
 
   return (

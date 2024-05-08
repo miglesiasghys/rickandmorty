@@ -1,32 +1,18 @@
 import React from 'react'
 import Cards from '../components/Cards'
 import { Grid, Pagination, Stack } from '@mui/material'
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import axios from 'axios'
+import { useEffect } from 'react'
+
+import useCharacters from '../hooks/useCharacters'
 
 export default function ContainCard() {
-  const [characters, setCharacters] = useState([])
-  const [page, setPage] = useState(1)
-  const [totalPages, setTotalPages] = useState(1)
 
-  const { filterStatus } = useParams()
+  const { characters, getCharacters, totalPages, page, handleChange, filterStatus, resetPage } = useCharacters()
 
-  useEffect(() => {
-    axios(
-      `https://rickandmortyapi.com/api/character/?page=${page}&${filterStatus ? `status=${filterStatus}` : ""}`)
-      .then(({ data }) => {
-        setTotalPages(data.info.pages)
-        setCharacters(data.results)
-      })
-  }, [filterStatus, page])
+  useEffect(() => { getCharacters() }, [page, filterStatus])
 
-  //SI CAMBIA EL ESTADO, VUELVE A LA PAG 1
-  useEffect(() => { setPage(1) }, [filterStatus])
-
-  const handleChange = (event, value) => {
-    setPage(value);
-  };
+  // SI CAMBIA EL ESTADO, VUELVE A LA PAG 1
+  useEffect(() => { resetPage() }, [filterStatus])
 
   return (
     <>
